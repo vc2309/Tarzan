@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Tab Three
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [color]="isRecording ? 'danger' : 'dark'">
+	<ion-button (click)=startListening()>GIVE COMMAND</ion-button>
+	<ion-card>
+    <ion-card-header>This is what I understood...</ion-card-header>
+    <ion-card-content>
+      <h1>{{ message }}</h1>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

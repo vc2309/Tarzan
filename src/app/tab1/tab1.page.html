@@ -1,0 +1,21 @@
+<ion-header>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <ion-toolbar>
+    <ion-title>
+      Tab One
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+<ion-button *ngIf="!this.connected" color="primary"  (click)=connectCar1() >
+Connect to First Car
+</ion-button>
+<div class="buttons">
+<ion-button id="up" (press)=moveForward() (pressup)="onPressUp($event)" color="secondary"><ion-icon name="arrow-round-up"></ion-icon></ion-button>
+<ion-button ion-button (press)=moveLeft() color="secondary" (pressup)="onPressUp($event)"><ion-icon name="arrow-round-back"></ion-icon></ion-button>
+<ion-button ion-button (press)=moveRight() (pressup)="onPressUp($event)" color="secondary"><ion-icon name="arrow-round-forward"></ion-icon></ion-button>
+<ion-button ion-button (press)=moveBack() (pressup)="onPressUp($event)" color="secondary"><ion-icon name="arrow-round-down"></ion-icon></ion-button>
+
+</div>
+</ion-content>

@@ -1,0 +1,20 @@
+<ion-tabs>
+
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button (click)=remote() tab="tab1">
+      <ion-icon name="logo-game-controller-a"></ion-icon>
+      <ion-label>Remote</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button (click)=command() tab="tab2">
+      <ion-icon name="car"></ion-icon>
+      <ion-label>Commands</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button (click)=command() tab="tab3">
+      <ion-icon name="mic"></ion-icon>
+      <ion-label>Voice Control</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+
+</ion-tabs>

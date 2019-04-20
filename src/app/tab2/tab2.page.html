@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Tab Two
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+<ion-card color="primary">
+  <ion-card-header>
+    <ion-card-title>Set Coordinates</ion-card-title>
+  </ion-card-header>
+    <ion-card-content>
+      <ion-input  text-right   type="number" id="input_x" [(ngModel)]="input_x">Set x</ion-input>
+
+      <ion-input  text-right   type="number" id="input_y" [(ngModel)]="input_y">Set y</ion-input>
+      <ion-button (click)="startCoord()" color="secondary">Start</ion-button>
+    </ion-card-content>
+  
+</ion-card>
+
+<ion-card color="primary">
+  <ion-card-header>
+    <ion-card-title>Follow Light</ion-card-title>
+  </ion-card-header>
+    <ion-card-content>
+      <ion-button (click)="startLight()" color="secondary">Start</ion-button>
+    </ion-card-content>
+  
+</ion-card>
+
+<ion-card color="primary">
+  <ion-card-header>
+    <ion-card-title>Set Coordinates</ion-card-title>
+  </ion-card-header>
+    <ion-card-content>
+      <ion-input  text-right   type="number" id="input_x" [(ngModel)]="input_x">Set x</ion-input>
+
+      <ion-input  text-right   type="number" id="input_y" [(ngModel)]="input_y">Set y</ion-input>
+      <ion-button (click)="startCoord()" color="secondary">Start</ion-button>
+    </ion-card-content>
+  
+</ion-card>
+</ion-content>

@@ -71,6 +71,7 @@ export class TabsPage implements OnInit{
 
 	
   	async remote(){
+  		console.log("sending remot");
   		await this.sendCommand("remote");
 
   	}

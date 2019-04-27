@@ -48,18 +48,63 @@ int get_qti(int pin){
   return analogRead(pin);
 }
 
-void backward(){
-//  left.writeMicroseconds(1500);
-//  right.writeMicroseconds(1560);
-    left.writeMicroseconds(1450);
-  right.writeMicroseconds(1610);
+//void backward(){
+////  left.writeMicroseconds(1500);
+////  right.writeMicroseconds(1560);
+//    left.writeMicroseconds(1450);
+//  right.writeMicroseconds(1610);
+//}
+//
+//void forward(){
+////  left.writeMicroseconds(1560);
+////  right.writeMicroseconds(1500);
+//  left.writeMicroseconds(1610);
+//  right.writeMicroseconds(1450);
+//}
+//
+//void stay(){
+//  left.writeMicroseconds(1530);
+//  right.writeMicroseconds(1530);
+//}
+//
+//void spin_left(){
+////  left.writeMicroseconds(1500);
+////  right.writeMicroseconds(1500);
+//  left.writeMicroseconds(1450);
+//  right.writeMicroseconds(1450);
+//}
+//
+//void spin_right(){
+////  left.writeMicroseconds(1560);
+////  right.writeMicroseconds(1560);
+//  left.writeMicroseconds(1610);
+//  right.writeMicroseconds(1610);
+//}
+
+
+//
+//void spin_right90(){
+//  // spin 90 degrees to right
+//  spin_right();
+//  delay(600);
+//  while(get_qti(A1) < thre3){
+//    delay(1);
+//  }
+//}
+//
+void spin_left90(){
+  // spin 90 degrees to left
+  spin_left();
+  delay(450);
+  while(get_qti(A1) < thre3){;
+    delay(1);
+  }
+  delay(20);
 }
 
-void forward(){
-//  left.writeMicroseconds(1560);
-//  right.writeMicroseconds(1500);
-  left.writeMicroseconds(1610);
-  right.writeMicroseconds(1450);
+void backward(){
+  left.writeMicroseconds(1500);
+  right.writeMicroseconds(1560);
 }
 
 void stay(){
@@ -67,36 +112,30 @@ void stay(){
   right.writeMicroseconds(1530);
 }
 
+void forward(){
+  left.writeMicroseconds(1600); // 40
+  right.writeMicroseconds(1460);
+}
+
+
 void spin_left(){
-//  left.writeMicroseconds(1500);
-//  right.writeMicroseconds(1500);
-  left.writeMicroseconds(1450);
-  right.writeMicroseconds(1450);
+  left.writeMicroseconds(1460);
+  right.writeMicroseconds(1460);
 }
 
 void spin_right(){
-//  left.writeMicroseconds(1560);
-//  right.writeMicroseconds(1560);
-  left.writeMicroseconds(1610);
-  right.writeMicroseconds(1610);
+  left.writeMicroseconds(1600); // 40
+  right.writeMicroseconds(1600);
 }
 
 void spin_right90(){
   // spin 90 degrees to right
   spin_right();
-  delay(600);
+  delay(450); // to do
   while(get_qti(A1) < thre3){
     delay(1);
   }
-}
-
-void spin_left90(){
-  // spin 90 degrees to left
-  spin_left();
-  delay(600);
-  while(get_qti(A1) < thre3){;
-    delay(1);
-  }
+  delay(20);
 }
 
 bool getpos(int l_qti, int m_qti, int r_qti, double &res){ 
@@ -129,11 +168,18 @@ bool getpos(int l_qti, int m_qti, int r_qti, double &res){
   return true;
 }
 
+//void linefollow(double pos){
+//  // difference in left/right wheel speed is proportional to
+//  // the deviation of the line position
+//  left.writeMicroseconds(1560 + (int)(pos*20));
+//  right.writeMicroseconds(1500 + (int)(pos*20));
+//}
+
 void linefollow(double pos){
   // difference in left/right wheel speed is proportional to
   // the deviation of the line position
-  left.writeMicroseconds(1560 + (int)(pos*20));
-  right.writeMicroseconds(1500 + (int)(pos*20));
+  left.writeMicroseconds(1600 + (int)(pos*80));
+  right.writeMicroseconds(1460 + (int)(pos*80));
 }
 
 void setup() {
@@ -178,18 +224,18 @@ void setDirection(){
 void first_turn(){
    if(direct == 3 || direct == 4 || direct == 5){
     forward();
-    delay(600);
+    delay(50);
     spin_right90();
     spin_right90();
   }
     else if(direct == 2){
       forward();
-      delay(600);
+      delay(50);
       spin_right90();
      }
      else if(direct == 6){
         forward();
-        delay(600);
+        delay(50);
         spin_left90();
      }else{
       Serial.println("entered here 2");
@@ -203,12 +249,12 @@ void second_turn(){
  }
  else if(direct == 1 || direct == 5){
     forward();
-    delay(600);
+    delay(50);
     spin_right90();
  }
  else if(direct == 3 || direct == 7){
     forward();
-    delay(600);
+    delay(50);
     spin_left90();
  }
 }
@@ -219,18 +265,18 @@ void turn_north(){
   }
   else if(direct == 1 || direct == 2 || direct == 3){
     forward();
-    delay(600);
+    delay(50);
     spin_left90();
   }
   else if( direct == 4){
     forward();
-    delay(600);
+    delay(50);
     spin_right90();
     spin_right90();
   }
   else if(direct == 5 || direct == 6 || direct == 7){
     forward();
-    delay(600);
+    delay(50);
     spin_right90();
   }
 }
@@ -258,7 +304,7 @@ void coord_loop(){
     stay(); 
   setDirection();
   forward();
-  delay(600);
+  delay(50);
   spin_left90();
   first_turn();
   bool temp = false;
@@ -285,7 +331,7 @@ void coord_loop(){
       intersection += 1;
       if(take_left){
         forward();
-        delay(600);
+        delay(50);
         spin_left90();
         if(obstacle_y){
           x_count += 1;
@@ -305,7 +351,7 @@ void coord_loop(){
         intersection = 0;
         if(temp){
           forward();
-          delay(600);
+          delay(50);
           spin_right90();
           take_left = true;
           obstacle_y = true;
@@ -321,7 +367,7 @@ void coord_loop(){
         intersection = 0;
         if(temp){
           forward();
-          delay(600);
+          delay(50);
           spin_right90();
           take_left = true;
           obstacle_x = true;
@@ -329,7 +375,7 @@ void coord_loop(){
         if(x_count == x_new_target){
             if(obstacle_x){
              forward();
-             delay(600);
+             delay(50);
              spin_left90();
              y_count -= 1;
             }
@@ -370,13 +416,13 @@ void followLight(){
 void makeMove(char val) {
   Serial.print("move");
   switch(val) {
-    case 'f' : forward(); delay(600);
+    case 'f' : forward(); delay(200);
     break;
-    case 'b' : backward(); delay(600);
+    case 'b' : backward(); delay(200);
     break;
-    case 'l' : spin_left(); delay(600);
+    case 'l' : spin_left(); delay(200);
     break;
-    case 'r' : spin_right(); delay(600);
+    case 'r' : spin_right(); delay(200);
     break;
     default : Serial.println("stay"); stay();
   }

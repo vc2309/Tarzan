@@ -11,7 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
 import { IonicGestureConfig } from "./ionic-gesture-config";
-
+import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview/ngx';
 export class CustomHammerConfig extends HammerGestureConfig {
     overrides = {
         'press': { time: 1000 }  //set press delay for 1 second

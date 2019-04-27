@@ -36,7 +36,7 @@ async onPress(dir) {
     const self = this;
     this.interval = setInterval(async () => {
         await self.sendCommand(dir);
-    }, 600);
+    }, 200);
 
 }
 
